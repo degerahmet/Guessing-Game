@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Ahmet Deger">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+</head>
+<body>
+    <script>
+        randomNumber = Math.floor(Math.random() * 10) + 1; // Initialization a random number between 1 and 10
+        
+        let guessCounter = 0; // Initialize the guessCounter variable to 0 to count the number of guesses
+        let playAgain = true; // Initialize the playAgain variable to true to start the game
+
+        // Start the game
+        while (playAgain) {
+            // Get the user's guess
+            let userGuess = prompt("Guess a number between 1 and 10");
+
+            // Increment the guess counter
+            guessCounter++;
+
+            // Check if the user's guess is correct
+            if (userGuess == randomNumber) {
+                alert("Congratulations! You guessed the correct number in " + guessCounter + " guesses."); // If the user's guess is correct
+                playAgain = confirm("Do you want to play again?"); // Ask the user if they want to play again
+
+                if (playAgain) { // If the user wants to play again
+                    randomNumber = Math.floor(Math.random() * 10) + 1; // Generate a new random number
+                    guessCounter = 0; // Reset the guess counter
+                }
+
+            } else if (userGuess > randomNumber) { 
+                alert("Sorry, your guess is too high. Try again."); // If the user's guess is too high
+            } else { 
+                alert("Sorry, your guess is too low. Try again."); // If the user's guess is too low
+            }
+        }      
+    </script>
+</body>
+</html>
